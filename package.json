@@ -1,0 +1,21 @@
+{
+  "name": "gcp-front-landing",
+  "version": "1.0.0",
+  "description": "Landing page en Node.js y versión estática sobre aprendizaje de Google Cloud Platform.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "gcp",
+    "landing-page",
+    "cloudshell"
+  ],
+  "author": "Jesús A. Chávez Becerra",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeschb/gcp-front-landing.git"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Landing page sobre las bondades de usar Google Cloud Storage como hosting estático básico."
+    />
+    <title>gcp-front-landing | Static Hosting con Cloud Storage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Manrope:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <div class="page-shell">
+      <header class="hero">
+        <nav class="topbar">
+          <span class="brand">gcp-front-landing</span>
+          <span class="pill">Google Cloud Storage Website Hosting</span>
+        </nav>
+
+        <section class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Hosting estático en GCP</p>
+            <h1>Publica una web ligera, rápida y clara usando Cloud Storage</h1>
+            <p class="lead">
+              Cuando solo necesitas archivos planos, Google Cloud Storage te
+              permite lanzar una landing sencilla sin complejidad innecesaria:
+              menos fricción, menor costo operativo y una ruta ideal para demos,
+              cursos, portafolios y sitios informativos.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button primary" href="#ventajas">Ver ventajas</a>
+              <a class="button secondary" href="#flujo">Cómo publicarlo</a>
+            </div>
+
+            <ul class="mini-stats">
+              <li>
+                <strong>100% estático</strong>
+                <span>HTML, CSS y assets listos para subir</span>
+              </li>
+              <li>
+                <strong>Muy simple</strong>
+                <span>Ideal para prácticas desde CloudShell</span>
+              </li>
+              <li>
+                <strong>Escalable</strong>
+                <span>Apoyado en la infraestructura global de Google</span>
+              </li>
+            </ul>
+          </div>
+
+          <aside class="hero-panel">
+            <div class="panel-glow"></div>
+            <p class="panel-label">Por qué funciona tan bien</p>
+            <div class="signal-card">
+              <span class="signal-dot"></span>
+              <div>
+                <h2>Subes archivos y listo</h2>
+                <p>
+                  `index.html`, `styles.css`, imágenes y recursos estáticos con
+                  un flujo limpio, didáctico y fácil de repetir en clase.
+                </p>
+              </div>
+            </div>
+            <div class="signal-list">
+              <div>
+                <strong>Operación mínima</strong>
+                <p>Sin servidor de aplicación para una landing simple.</p>
+              </div>
+              <div>
+                <strong>Buena base de aprendizaje</strong>
+                <p>Perfecto para introducir buckets, permisos y despliegue.</p>
+              </div>
+              <div>
+                <strong>Publicación rápida</strong>
+                <p>Desde CloudShell puedes construir y subir en pocos pasos.</p>
+              </div>
+            </div>
+          </aside>
+        </section>
+      </header>
+
+      <main>
+        <section class="section" id="ventajas">
+          <div class="section-heading">
+            <p class="eyebrow">Bondades</p>
+            <h2>Ventajas de usar Cloud Storage para hosting estático básico</h2>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <span class="feature-kicker">01</span>
+              <h3>Simplicidad real</h3>
+              <p>
+                Si tu sitio no necesita backend, una carpeta con archivos planos
+                es suficiente para publicar una experiencia profesional.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <span class="feature-kicker">02</span>
+              <h3>Costos controlados</h3>
+              <p>
+                Pagas por almacenamiento y transferencia, evitando desplegar una
+                plataforma mayor a la que el caso realmente requiere.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <span class="feature-kicker">03</span>
+              <h3>Despliegue ágil</h3>
+              <p>
+                Desde CloudShell puedes subir el contenido al bucket y dejar la
+                web disponible en pocos minutos.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <span class="feature-kicker">04</span>
+              <h3>Excelente para enseñar</h3>
+              <p>
+                Permite explicar conceptos fundamentales de GCP con una práctica
+                concreta, visible y muy fácil de validar.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section ribbon-section">
+          <div class="ribbon-card">
+            <p class="eyebrow">Casos ideales</p>
+            <div class="ribbon-track">
+              <span>Landing pages</span>
+              <span>Micrositios académicos</span>
+              <span>Portafolios</span>
+              <span>Documentación simple</span>
+              <span>Entregables de clase</span>
+              <span>Demos rápidas</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="flujo">
+          <div class="section-heading">
+            <p class="eyebrow">Flujo sugerido</p>
+            <h2>Del código local a un bucket público en muy pocos pasos</h2>
+          </div>
+
+          <div class="steps-grid">
+            <article class="step-card">
+              <span class="step-number">Paso 1</span>
+              <h3>Preparar archivos estáticos</h3>
+              <p>
+                Trabaja tu landing en local o en CloudShell y deja listos tus
+                archivos HTML, CSS, imágenes y recursos.
+              </p>
+            </article>
+
+            <article class="step-card">
+              <span class="step-number">Paso 2</span>
+              <h3>Subir al bucket</h3>
+              <p>
+                Copia el contenido al bucket de Cloud Storage y define
+                `index.html` como documento principal del sitio.
+              </p>
+            </article>
+
+            <article class="step-card">
+              <span class="step-number">Paso 3</span>
+              <h3>Compartir la URL</h3>
+              <p>
+                Habilita acceso público según el escenario del curso y publica
+                una URL básica para mostrar el resultado.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section highlight-section">
+          <div class="highlight-card">
+            <div>
+              <p class="eyebrow">Idea clave</p>
+              <h2>
+                Cloud Storage no solo guarda archivos: también puede ser el
+                punto de partida perfecto para publicar una web educativa.
+              </h2>
+            </div>
+            <p>
+              Para un hosting estático básico, la experiencia es directa, limpia
+              y muy valiosa para entender cómo GCP resuelve necesidades reales
+              sin sobrearquitectura.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>Créditos del docente: Ing. Jesús A. Chávez Becerra (jeschb@gmail.com)</p>
+      </footer>
+    </div>
+  </body>
+</html>
