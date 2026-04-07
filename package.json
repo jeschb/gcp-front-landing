@@ -4,7 +4,9 @@
   "description": "Landing page en Node.js y versión estática sobre aprendizaje de Google Cloud Platform.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "node build.js",
+    "deploy": "gsutil -m cp -r dist/. gs://$BUCKET_NAME"
   },
   "keywords": [
     "nodejs",

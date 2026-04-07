@@ -1,9 +1,7 @@
 # gcp-front-landing
 
-Landing page de una sola vista sobre aprendizaje de Google Cloud Platform. El proyecto incluye dos formas de uso:
-
-- modo `Node.js` para ejecutar localmente o en CloudShell
-- modo `estático` con archivos planos listos para subir a un bucket de GCP
+Landing page de una sola vista sobre aprendizaje de Google Cloud Platform.  
+El proyecto está diseñado para compilarse desde **Google Cloud Shell** y publicarse como hosting estático en **Cloud Storage**.
 
 ## Repositorio
 
@@ -13,59 +11,80 @@ https://github.com/jeschb/gcp-front-landing.git
 
 ## Estructura
 
-- `public/`: versión usada por el servidor Node.js
-- `dist/`: archivos planos listos para static hosting en Cloud Storage
-- `server.js`: servidor HTTP mínimo para pruebas
-- `Dockerfile`: contenedor para probar la app sin instalar Node.js localmente
+```
+gcp-front-landing/
+├── src/          ← archivos fuente (HTML, CSS) — se editan aquí
+├── dist/         ← generado por npm run build — no se versiona
+├── build.js      ← script de build (Node nativo, sin dependencias)
+├── server.js     ← servidor HTTP para desarrollo local en CloudShell
+├── Dockerfile    ← alternativa para correr sin Node.js instalado
+└── package.json
+```
 
-## Ejecutar en Google CloudShell
+## Flujo completo en Google Cloud Shell
 
-CloudShell ya trae Node.js preinstalado en la mayoría de escenarios. Dentro del repositorio:
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/jeschb/gcp-front-landing.git
+cd gcp-front-landing
+```
+
+### 2. Compilar (genera la carpeta dist/)
+
+```bash
+npm run build
+```
+
+> No requiere `npm install`. El script usa solo módulos nativos de Node.js.
+
+### 3. Crear el bucket y publicar
+
+```bash
+# Crear el bucket (solo la primera vez)
+gsutil mb -l us-central1 gs://TU_BUCKET
+
+# Subir el dist/ al bucket
+export BUCKET_NAME=TU_BUCKET
+npm run deploy
+
+# Configurar hosting estático y acceso público
+gsutil web set -m index.html -e index.html gs://TU_BUCKET
+gsutil iam ch allUsers:objectViewer gs://TU_BUCKET
+```
+
+El sitio quedará disponible en:
+
+```text
+https://storage.googleapis.com/TU_BUCKET/index.html
+```
+
+## Desarrollo local en Cloud Shell
+
+Para previsualizar el sitio antes de publicar, levanta el servidor Node.js:
 
 ```bash
 npm start
 ```
 
-La aplicación queda escuchando en el puerto `8080`.
+La aplicación queda escuchando en el puerto `8080`. Usa el botón **Web Preview → Port 8080** en Cloud Shell para abrirlo en el navegador.
 
 ## Probar con Docker
 
-Si no tienes Node.js instalado localmente, puedes levantar el proyecto con Docker:
+Si no tienes Node.js instalado localmente:
 
 ```bash
 docker build -t gcp-front-landing .
 docker run -p 8080:8080 gcp-front-landing
 ```
 
-Luego abre:
+## Scripts disponibles
 
-```text
-http://localhost:8080
-```
-
-## Publicar como hosting estático básico en GCP
-
-Los archivos que debes subir al bucket están en la carpeta `dist/`.
-
-Contenido principal:
-
-- `dist/index.html`
-- `dist/styles.css`
-
-Flujo sugerido:
-
-```bash
-gsutil mb -l us-central1 gs://TU_BUCKET
-gsutil cp dist/* gs://TU_BUCKET
-gsutil web set -m index.html -e index.html gs://TU_BUCKET
-gsutil iam ch allUsers:objectViewer gs://TU_BUCKET
-```
-
-Después podrás abrir algo similar a:
-
-```text
-http://storage.googleapis.com/TU_BUCKET/index.html
-```
+| Comando | Descripción |
+|---|---|
+| `npm run build` | Genera `dist/` a partir de `src/` |
+| `npm run deploy` | Sube `dist/` al bucket definido en `$BUCKET_NAME` |
+| `npm start` | Inicia el servidor local en el puerto 8080 |
 
 ## Créditos
 
