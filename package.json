@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "build": "node build.js",
-    "deploy": "gcloud storage cp -r dist/. gs://$BUCKET_NAME"
+    "deploy": "gcloud storage cp dist/index.html dist/styles.css gs://$BUCKET_NAME"
   },
   "keywords": [
     "nodejs",
@@ -21,3 +21,5 @@
   },
   "license": "MIT"
 }
+
+// "deploy": "gcloud storage cp -r dist/. gs://$BUCKET_NAME"
