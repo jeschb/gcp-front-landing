@@ -49,8 +49,13 @@ export BUCKET_NAME=TU_BUCKET
 npm run deploy
 
 # Configurar hosting estático y acceso público
-gsutil web set -m index.html -e index.html gs://TU_BUCKET
-gsutil iam ch allUsers:objectViewer gs://TU_BUCKET
+gcloud storage buckets update gs://TU_BUCKET \
+  --web-main-page-suffix=index.html \
+  --web-error-page=index.html
+
+gcloud storage buckets add-iam-policy-binding gs://TU_BUCKET \
+  --member=allUsers \
+  --role=roles/storage.objectViewer
 ```
 
 El sitio quedará disponible en:
