@@ -21,5 +21,3 @@
   },
   "license": "MIT"
 }
-
-// "deploy": "gcloud storage cp -r dist/. gs://$BUCKET_NAME"

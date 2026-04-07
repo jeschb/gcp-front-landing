@@ -42,11 +42,14 @@ npm run build
 
 ```bash
 # Crear el bucket (solo la primera vez)
-gsutil mb -l us-central1 gs://TU_BUCKET
+gcloud storage buckets create gs://TU_BUCKET --location=us-central1
 
 # Subir el dist/ al bucket
 export BUCKET_NAME=TU_BUCKET
 npm run deploy
+
+# En el package.json puede desplegarse también toda una carpeta
+# "deploy": "gcloud storage cp -r dist/. gs://$BUCKET_NAME"
 
 # Configurar hosting estático y acceso público
 gcloud storage buckets update gs://TU_BUCKET \
